@@ -16,9 +16,9 @@ class Ship {
 
 // console.log(ussAssembly);
 
+// * === ALIEN INFORMATION * === //
 // make class for our ship
-
-class alienShips {
+class Aliens {
     constructor(){
         this.ships = []
     }
@@ -29,14 +29,19 @@ class alienShips {
     }
 }
 
-const aliens = new alienShips();
+const aliens = new Aliens();
 
 //generate alien ships and add to array of ships
 for (let i = 0; i <= 5; i++) {
     aliens.generateAlienShip();
 }
+
 // print array of ships
 console.log(aliens);
+
+// rename for clarity
+const alienShips = aliens.ships;
+
 // print 1 ship from array
-console.log(aliens.ships[1]);
-console.log(aliens.ships[2]);
+console.log(alienShips[1]);
+console.log(alienShips[2]);
