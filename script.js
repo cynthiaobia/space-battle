@@ -10,11 +10,17 @@ class Ship {
         this.firepower = firepower;
         this.accuracy = accuracy;
     }
+
+    attack(){
+        console.log('hi')
+    }
 }
 
 // MY SHIP
 const ussAssembly = new Ship(20, 5, .7);
 console.log('My ship: ', ussAssembly);
+
+ussAssembly.attack();
 
 // * === ALIEN INFORMATION * === //
 // make factory for alien ships
