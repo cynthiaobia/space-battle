@@ -5,7 +5,8 @@
 // make ship class
 
 class Ship {
-    constructor(hull, firepower, accuracy){
+    constructor(shipName, hull, firepower, accuracy){
+        this.shipName = shipName;
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
@@ -14,13 +15,17 @@ class Ship {
     attack(){
         console.log('hi')
     }
+
+    printInfo(){
+        console.log(`SHIP INFORMATION\nNAME: ${this.shipName} HULL: ${this.hull} FIRE POWER: ${this.firepower} ACCURACY: ${this.accuracy}`)
+    }
 }
 
 // MY SHIP
-const ussAssembly = new Ship(20, 5, .7);
+const ussAssembly = new Ship('USS Assembly', 20, 5, .7);
 console.log('My ship: ', ussAssembly);
 
-ussAssembly.attack();
+ussAssembly.printInfo();
 
 // * === ALIEN INFORMATION * === //
 // make factory for alien ships
@@ -37,6 +42,7 @@ class Aliens {
     generateAlienShip (){
         const newShip = new Ship();
         // initialize alien ship values
+        newShip.shipName = 'Alien ' + (this.ships.length + 1);
         newShip.hull = randomNumber(3, 6);
         newShip.firepower = randomNumber(2, 4);
         newShip.accuracy = randomNumber(.6, .8);
@@ -60,3 +66,6 @@ const alienShips = aliens.ships;
 // print 1 ship from array and some ship properties
 console.log(alienShips[1]);
 console.log(alienShips[2].hull);
+
+// print ship info
+alienShips[1].printInfo();
