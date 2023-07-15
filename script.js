@@ -12,12 +12,17 @@ class Ship {
     }
 }
 
-// const ussAssembly = new Ship(20, 5, .7);
-
-// console.log(ussAssembly);
+// MY SHIP
+const ussAssembly = new Ship(20, 5, .7);
+console.log('My ship: ', ussAssembly);
 
 // * === ALIEN INFORMATION * === //
-// make class for our ship
+// make factory for alien ships
+// generate random num in range (min max)
+function randomNumber(min, max) {
+    return Math.random() * (max - min) + min
+}
+
 class Aliens {
     constructor(){
         this.ships = []
@@ -26,9 +31,9 @@ class Aliens {
     generateAlienShip (){
         const newShip = new Ship();
         // initialize alien ship values
-        newShip.hull = 100;
-        newShip.firepower = 100;
-        newShip.accuracy = 100;
+        newShip.hull = randomNumber(3, 6);
+        newShip.firepower = randomNumber(2, 4);
+        newShip.accuracy = randomNumber(.6, .8);
         this.ships.push(newShip);
     }
 }
