@@ -25,6 +25,10 @@ class Aliens {
 
     generateAlienShip (){
         const newShip = new Ship();
+        // initialize alien ship values
+        newShip.hull = 100;
+        newShip.firepower = 100;
+        newShip.accuracy = 100;
         this.ships.push(newShip);
     }
 }
@@ -42,6 +46,6 @@ console.log(aliens);
 // rename for clarity
 const alienShips = aliens.ships;
 
-// print 1 ship from array
+// print 1 ship from array and some ship properties
 console.log(alienShips[1]);
-console.log(alienShips[2]);
+console.log(alienShips[2].hull);
