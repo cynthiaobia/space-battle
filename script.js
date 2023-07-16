@@ -13,19 +13,13 @@ class Ship {
     }
 
     attack(){
-        console.log('hi')
+        console.log(`${this.shipName.toUpperCase()} is attacking...`);
     }
 
     printInfo(){
         console.log(`SHIP INFORMATION\nNAME: ${this.shipName} HULL: ${this.hull} FIRE POWER: ${this.firepower} ACCURACY: ${this.accuracy}`)
     }
 }
-
-// MY SHIP
-const ussAssembly = new Ship('USS Assembly', 20, 5, .7);
-console.log('My ship: ', ussAssembly);
-
-ussAssembly.printInfo();
 
 // * === ALIEN INFORMATION * === //
 // make factory for alien ships
@@ -50,22 +44,40 @@ class Aliens {
     }
 }
 
-const aliens = new Aliens();
+// test attack console.log 
+// alienShips[2].attack();
 
-//generate alien ships and add to array of ships
-for (let i = 0; i <= 5; i++) {
-    aliens.generateAlienShip();
+// print alien ship info
+// alienShips[1].printInfo();
+
+// making the game
+// compare accuracy of ships. ship with greater accuracy get to attack. ships that's attacked hull decreases by the fire power of the other. first hull to 0 loses
+
+// function to create ships
+function createShips() {
+    // MY SHIP
+    const ussAssembly = new Ship('USS Assembly', 20, 5, .7);
+    // ussAssembly.printInfo();
+    const aliens = new Aliens();
+
+    //generate alien ships and add to array of ships
+    for (let i = 0; i <= 1; i++) {
+        aliens.generateAlienShip();
+    }
+    // rename for clarity
+    const alienShips = aliens.ships;
+
+    return [ussAssembly, aliens];
+    // print array of ships
+    // console.log(aliens);
+
+    // print 1 ship from array and some ship properties
+    // console.log(alienShips[1]);
+    // console.log(alienShips[2].hull);
 }
 
-// print array of ships
-console.log(aliens);
+const players = createShips();
+const myShip = players[0];
+const opps = players[1];
+// console.log(arr[1].ships[1].hull);
 
-// rename for clarity
-const alienShips = aliens.ships;
-
-// print 1 ship from array and some ship properties
-console.log(alienShips[1]);
-console.log(alienShips[2].hull);
-
-// print ship info
-alienShips[1].printInfo();
