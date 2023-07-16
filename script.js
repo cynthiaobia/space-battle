@@ -8,15 +8,15 @@ class Ship {
     }
     
     attack(){
-        console.log(`${this.shipName.toUpperCase()} is attacking...`);
+        console.log(`\n${this.shipName.toUpperCase()} is attacking...`);
     }
 
     noAttack(){
-        console.log(`${this.shipName.toUpperCase()} missed and cannot attack.`);
+        console.log(`\n${this.shipName.toUpperCase()} missed and cannot attack.`);
     }
 
     printInfo(){
-        console.log(`${this.shipName.toUpperCase()} - HULL: ${this.hull} FIRE POWER: ${this.firepower} ACCURACY: ${this.accuracy}`)
+        console.log(`${this.shipName.toUpperCase()} || HULL: ${this.hull}, FIRE POWER: ${this.firepower}, ACCURACY: ${this.accuracy}`)
     }
 }
 
@@ -30,9 +30,9 @@ class Aliens {
     generateAlienShip (){
         const newShip = new Ship();
         newShip.shipName = 'Alien ' + (this.ships.length + 1);
-        newShip.hull = Math.random() * (6 - 3) + 3
-        newShip.firepower = Math.random() * (4 - 2) + 2
-        newShip.accuracy = Math.random() * (.8 - .6) + .6
+        newShip.hull = Math.floor(Math.random() * 4) + 3;
+        newShip.firepower = Math.floor(Math.random() * 3) + 2;
+        newShip.accuracy = (Math.floor(Math.random() * 3) + 6) / 10;
         this.ships.push(newShip);
     }
 }
@@ -95,13 +95,13 @@ while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
                 myShipPlays();
             }
             else {
-                console.log(`\nROUND OVER - ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull}, ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
+                console.log(`\nROUND OVER | ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull} | ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
             }
             if ((oppShip.hull > 0) && (myShip.hull > 0)) {
                 oppShipPlays();
             }
             else {
-                console.log(`\nROUND OVER - ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull}, ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
+                console.log(`\nROUND OVER | ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull} | ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
             }
         }
     allAliens.shift();
@@ -111,7 +111,7 @@ while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
         console.log(`\nGAME OVER. YOU LOSE :(  ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull}, ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
     }
     else {
-        input = prompt("Would you like to retreat? (Y/N)");
+        input = prompt("Would you like to retreat? (Y/N)").toLowerCase();
         if (input === 'y'){
             retreat = true;
             console.log("\nTHANKS FOR PLAYING. YOU'VE SUCCEEDED FOR NOW. WE AWAIT YOUR RETURN...")
@@ -119,20 +119,20 @@ while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
         else if (input === 'n'){
             retreat = false;
         }
+        else {
+            input = prompt(`You're input is invalid. Please enter Y or N and try again.`);
+        }
+        
         console.log(`RETREAT? ${input}`);
     }
     console.log(`=====================================`);
-    // console.log(`\n`);
 }
+
 if ((myShip.hull > 0) && (retreat === false)){
     console.log('\nYOU DESTROYED ALL THE SHIPS, YOU WIN! ');
 }
 
-// ================================
-// edit formatting
-// fix functions
-// random number generator
-
+// check retreat value for invalid inputs
 
 
 
