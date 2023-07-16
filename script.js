@@ -10,6 +10,7 @@ class Ship {
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
+        this.attack = true;
     }
 
     attack(){
@@ -37,9 +38,12 @@ class Aliens {
         const newShip = new Ship();
         // initialize alien ship values
         newShip.shipName = 'Alien ' + (this.ships.length + 1);
-        newShip.hull = randomNumber(3, 6);
-        newShip.firepower = randomNumber(2, 4);
-        newShip.accuracy = randomNumber(.6, .8);
+        // newShip.hull = randomNumber(3, 6);
+        newShip.hull = 4; // remove later
+        // newShip.firepower = randomNumber(2, 4);
+        newShip.firepower = 3; // remove later
+        // newShip.accuracy = randomNumber(.6, .8);
+        newShip.accuracy = .7; // remove later
         this.ships.push(newShip);
     }
 }
@@ -51,7 +55,7 @@ class Aliens {
 // alienShips[1].printInfo();
 
 // making the game
-// compare accuracy of ships. ship with greater accuracy get to attack. ships that's attacked hull decreases by the fire power of the other. first hull to 0 loses
+// compare accuracy of ships to randomly generated accuracy. greater accuracy gets to attack. ships that's attacked hull decreases by the fire power of the other. first hull to 0 loses
 
 // function to create ships
 function createShips() {
@@ -78,6 +82,31 @@ function createShips() {
 
 const players = createShips();
 const myShip = players[0];
-const opps = players[1];
-// console.log(arr[1].ships[1].hull);
+const allAliens = players[1].ships; // returns array of all alien ships
+const oppShip = allAliens[0]
+
+// starting scores.
+console.log('starting scores');
+console.log(myShip)
+// console.log(allAliens);
+console.log(oppShip)
+
+let myShipAttack = true;
+// if (Math.random() < myShip.accuracy){
+if (.5 < myShip.accuracy){
+    
+    console.log('My ship can attack!');
+    oppShip.hull -= myShip.firepower;
+    console.log(myShip);
+    console.log(oppShip);
+}
+
+if (.5 < oppShip.accuracy){
+    console.log('Your ship can attack!');
+    myShip.hull -= oppShip.firepower;
+    console.log(myShip);
+    console.log(oppShip);
+}
+
+
 
