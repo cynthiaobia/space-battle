@@ -88,6 +88,7 @@ function createShips() {
 
 
 
+
 // My ship's turn to play
 function myShipPlays(){
     if (Math.random() < myShip.accuracy){
@@ -127,31 +128,57 @@ const myShip = players[0];
 const allAliens = players[1].ships; // returns array of all alien ships
 let oppShip;
 
+// set retreat value
+ 
+
+
+
+
+// while game end != true and/or array not empty
 // starting scores.
 console.log('starting scores');
 console.log(myShip)
 // console.log(allAliens);
 // console.log(oppShip)
-console.log(`\n`);
 
+let retreat;
+let input;
+const gameEnd = false;
 
-// while game end != true
-    for (const ship of allAliens){
-        oppShip = ship;
-        console.log(`\nSTART NEW ROUND: `)
-        // run continuous game til one player reaches 0
-        while ((myShip.hull > 1) && (oppShip.hull) > 1){ // check conditions here
-            myShipPlays();
-            oppShipPlays();
-            // print winner
-            if (myShip.hull > 0){
+while ((allAliens.length !== 0) && (retreat !== false)){ 
+for (const ship of allAliens){
+    oppShip = ship;
+    console.log(oppShip);
+    console.log(`\nSTART NEW ROUND: `)
+    // run continuous game til one player reaches 0
+    while ((myShip.hull >= 0) && (oppShip.hull) >= 0){ // check conditions here
+        myShipPlays();
+        oppShipPlays();
+        // print winner
+        if (myShip.hull > 0){
             console.log(`${myShip.shipName} wins! ${oppShip.shipName} loses :(`);
-            }
-            else {
-                console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
-            }
         }
+        else {
+            console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
+        }
+
     }
+    input = prompt("Would you like to retreat? (Y/N)");
+    if (input === 'y'){
+        retreat = false;
+    } 
+    else if (input === 'n'){
+        retreat = true;
+    }
+    console.log(retreat); 
+    }
+}
+
+
+
+
+
+
 
 
 
