@@ -101,16 +101,16 @@ let retreat = false;
 let input;
 
 
-while ((allAliens.length !== 0) && (retreat === false)) {
+while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
 oppShip = allAliens[0];
-    while ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
-        if ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
+    while ((myShip.hull > 0) && (oppShip.hull > 0)) {
+        if ((myShip.hull > 0) && (oppShip.hull > 0)) {
             myShipPlays();
         }
         else {
             console.log('round over');
         }
-        if ((oppShip.hull >= 0) && (myShip.hull >= 0)) {
+        if ((oppShip.hull > 0) && (myShip.hull > 0)) {
             oppShipPlays();
         }
         else {
@@ -122,7 +122,6 @@ allAliens.shift();
 input = prompt("Would you like to retreat? (Y/N)");
 if (input === 'y'){
     retreat = true;
-    break;
 } 
 else if (input === 'n'){
     retreat = false;
