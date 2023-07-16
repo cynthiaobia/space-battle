@@ -69,7 +69,7 @@ function createShips() {
     const aliens = new Aliens();
 
     //generate alien ships and add to array of ships
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i <= 4; i++) {
         aliens.generateAlienShip();
     }
     // rename for clarity
@@ -145,7 +145,6 @@ let retreat = false;
 let input;
 const gameEnd = false;
 
-while ((allAliens.length !== 0) && (retreat !== true)){ 
 for (const ship of allAliens){
     oppShip = ship;
     console.log(oppShip);
@@ -161,7 +160,11 @@ for (const ship of allAliens){
             console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
         }
     }
+    console.log(allAliens);
 }
+
+
+/*
 input = prompt("Would you like to retreat? (Y/N)");
 if (input === 'y'){
     retreat = true;
@@ -170,9 +173,7 @@ else if (input === 'n'){
     retreat = false;
 }
 console.log(`Retreat? ${input}`);
-}
-
-
+*/
 
 
 
