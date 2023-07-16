@@ -96,19 +96,38 @@ console.log(myShip)
 console.log(oppShip)
 console.log(`\n`);
 
-if (Math.random() < myShip.accuracy){
-    myShip.attacking = true;
-    myShip.attack();
-    oppShip.hull -= myShip.firepower;
-    console.log(myShip);
-    console.log(oppShip);
+function myShipPlays(){
+    if (Math.random() < myShip.accuracy){
+        myShip.attacking = true;
+        myShip.attack();
+        oppShip.hull -= myShip.firepower;
+        console.log(myShip);
+        console.log(oppShip);
+    }
+    else {
+        myShip.attacking = false;
+        myShip.noAttack();
+        console.log(myShip);
+        console.log(oppShip);
+    }    
 }
-else {
-    myShip.attacking = false;
-    myShip.noAttack();
-    console.log(myShip);
-    console.log(oppShip);
+
+function oppShipPlays(){
+    if (Math.random() < oppShip.accuracy){
+        oppShip.attacking = true;
+        oppShip.attack();
+        myShip.hull -= oppShip.firepower;
+        console.log(oppShip);
+        console.log(myShip);
+    }
+    else {
+        oppShip.attacking = false;
+        oppShip.noAttack();
+        console.log(myShip);
+        console.log(oppShip);
+    }
 }
+
 
 
 
