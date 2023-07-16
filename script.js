@@ -1,9 +1,3 @@
-// start with actors then actions
-// actors: our spaceship, alien spaceships
-// actions: attack, retreat
-
-// make ship class
-
 class Ship {
     constructor(shipName, hull, firepower, accuracy){
         this.shipName = shipName;
@@ -28,7 +22,6 @@ class Ship {
 
 // * === ALIEN INFORMATION * === //
 // make factory for alien ships
-// generate random num in range (min max)
 function randomNumber(min, max) {
     return Math.random() * (max - min) + min
 }
@@ -52,15 +45,6 @@ class Aliens {
     }
 }
 
-// test attack console.log 
-// alienShips[2].attack();
-
-// print alien ship info
-// alienShips[1].printInfo();
-
-// making the game
-// compare accuracy of ships to randomly generated accuracy. greater accuracy gets to attack. ships that's attacked hull decreases by the fire power of the other. first hull to 0 loses
-
 // function to create ships
 function createShips() {
     // MY SHIP
@@ -72,22 +56,8 @@ function createShips() {
     for (let i = 0; i <= 4; i++) {
         aliens.generateAlienShip();
     }
-    // rename for clarity
-    const alienShips = aliens.ships;
-
-    return [ussAssembly, aliens];
-    // print array of ships
-    // console.log(aliens);
-
-    // print 1 ship from array and some ship properties
-    // console.log(alienShips[1]);
-    // console.log(alienShips[2].hull);
+    return [ussAssembly, aliens];  
 }
-
-// generate game start function
-
-
-
 
 // My ship's turn to play
 function myShipPlays(){
@@ -126,13 +96,33 @@ function oppShipPlays(){
 const players = createShips();
 const myShip = players[0];
 const allAliens = players[1].ships; // returns array of all alien ships
-let oppShip;
+const oppShip = allAliens[1];
 
+
+while ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
+if ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
+    myShipPlays();
+}
+else {
+    console.log('round over');
+}
+if ((oppShip.hull >= 0) && (myShip.hull >= 0)) {
+    oppShipPlays();
+}
+else {
+    console.log('round over');
+}
+}
+
+
+
+
+
+
+
+
+/*
 // set retreat value
- 
-
-
-
 
 // while game end != true and/or array not empty
 // starting scores.
@@ -151,23 +141,28 @@ const gameEnd = false;
 for (const ship of allAliens){
     oppShip = ship;
     // run continuous game til one player reaches 0
-    while ((myShip.hull > 0) && (oppShip.hull > 0)){ // check conditions here
-        myShipPlays();
+    while ((myShip.hull >= 0) && (oppShip.hull >= 0)){ // check conditions here
+        myShipPlays(); // i know what's going on here. even if it goes zero or negative it still runs the next line before quitting
         oppShipPlays();
     }
     // print winner
     if (myShip.hull > 0){
         console.log(`${myShip.shipName} wins! ${oppShip.shipName} loses :(`);
         console.log(`\n`);
+        // this is where input prompt should go!!!!!!!!!
     }
     else {
         console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
         console.log(`\n`);
+        // this is where input prompt should go!!!!!!!!!
     }
 }
 allAliens.shift();
 console.log(allAliens);
 // }
+*/
+
+
 
 /*
 input = prompt("Would you like to retreat? (Y/N)");
