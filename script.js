@@ -141,15 +141,14 @@ console.log(myShip)
 // console.log(allAliens);
 // console.log(oppShip)
 
-let retreat;
+let retreat = false;
 let input;
 const gameEnd = false;
 
-while ((allAliens.length !== 0) && (retreat !== false)){ 
+while ((allAliens.length !== 0) && (retreat !== true)){ 
 for (const ship of allAliens){
     oppShip = ship;
     console.log(oppShip);
-    console.log(`\nSTART NEW ROUND: `)
     // run continuous game til one player reaches 0
     while ((myShip.hull >= 0) && (oppShip.hull) >= 0){ // check conditions here
         myShipPlays();
@@ -161,17 +160,16 @@ for (const ship of allAliens){
         else {
             console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
         }
-
     }
-    input = prompt("Would you like to retreat? (Y/N)");
-    if (input === 'y'){
-        retreat = false;
-    } 
-    else if (input === 'n'){
-        retreat = true;
-    }
-    console.log(retreat); 
-    }
+}
+input = prompt("Would you like to retreat? (Y/N)");
+if (input === 'y'){
+    retreat = true;
+} 
+else if (input === 'n'){
+    retreat = false;
+}
+console.log(`Retreat? ${input}`);
 }
 
 
