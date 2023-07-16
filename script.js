@@ -16,7 +16,7 @@ class Ship {
     }
 
     printInfo(){
-        console.log(`SHIP INFORMATION\nNAME: ${this.shipName} HULL: ${this.hull} FIRE POWER: ${this.firepower} ACCURACY: ${this.accuracy}`)
+        console.log(`${this.shipName.toUpperCase()} HULL: ${this.hull} FIRE POWER: ${this.firepower} ACCURACY: ${this.accuracy}`)
     }
 }
 
@@ -53,7 +53,7 @@ function createShips() {
     const aliens = new Aliens();
 
     //generate alien ships and add to array of ships
-    for (let i = 0; i <= 4; i++) {
+    for (let i = 0; i <= 8; i++) {
         aliens.generateAlienShip();
     }
     return [ussAssembly, aliens];  
@@ -65,14 +65,14 @@ function myShipPlays(){
         myShip.attacking = true;
         myShip.attack();
         oppShip.hull -= myShip.firepower;
-        console.log(myShip);
-        console.log(oppShip);
+        myShip.printInfo();
+        oppShip.printInfo();
     }
     else {
         myShip.attacking = false;
         myShip.noAttack();
-        console.log(myShip);
-        console.log(oppShip);
+        myShip.printInfo;
+        oppShip.printInfo();
     }    
 }
 
@@ -82,38 +82,54 @@ function oppShipPlays(){
         oppShip.attacking = true;
         oppShip.attack();
         myShip.hull -= oppShip.firepower;
-        console.log(myShip);
-        console.log(oppShip);
+        myShip.printInfo();
+        oppShip.printInfo();
     }
     else {
         oppShip.attacking = false;
         oppShip.noAttack();
-        console.log(myShip);
-        console.log(oppShip);
+        myShip.printInfo();
+        oppShip.printInfo();
     }
 }
 
 const players = createShips();
 const myShip = players[0];
 const allAliens = players[1].ships; // returns array of all alien ships
-const oppShip = allAliens[1];
+
+let retreat = false;
+let input;
 
 
-while ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
-if ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
-    myShipPlays();
-}
-else {
-    console.log('round over');
-}
-if ((oppShip.hull >= 0) && (myShip.hull >= 0)) {
-    oppShipPlays();
-}
-else {
-    console.log('round over');
-}
-}
+while ((allAliens.length !== 0) && (retreat === false)) {
+oppShip = allAliens[0];
+    while ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
+        if ((myShip.hull >= 0) && (oppShip.hull >= 0)) {
+            myShipPlays();
+        }
+        else {
+            console.log('round over');
+        }
+        if ((oppShip.hull >= 0) && (myShip.hull >= 0)) {
+            oppShipPlays();
+        }
+        else {
+            console.log('round over');
+        }
+    }
+allAliens.shift();
 
+input = prompt("Would you like to retreat? (Y/N)");
+if (input === 'y'){
+    retreat = true;
+    break;
+} 
+else if (input === 'n'){
+    retreat = false;
+}
+console.log(`Retreat? ${input}`);
+
+}
 
 
 
