@@ -69,7 +69,7 @@ function createShips() {
     const aliens = new Aliens();
 
     //generate alien ships and add to array of ships
-    for (let i = 0; i <= 1; i++) {
+    for (let i = 0; i <= 3; i++) {
         aliens.generateAlienShip();
     }
     // rename for clarity
@@ -85,17 +85,7 @@ function createShips() {
 }
 
 // generate game start function
-const players = createShips();
-const myShip = players[0];
-const allAliens = players[1].ships; // returns array of all alien ships
-const oppShip = allAliens[0]
 
-// starting scores.
-console.log('starting scores');
-console.log(myShip)
-// console.log(allAliens);
-console.log(oppShip)
-console.log(`\n`);
 
 
 // My ship's turn to play
@@ -127,20 +117,43 @@ function oppShipPlays(){
     else {
         oppShip.attacking = false;
         oppShip.noAttack();
-        console.log(oppShip);
         console.log(myShip);
+        console.log(oppShip);
     }
 }
 
-// run continuous game til one player reaches 0
-while ((myShip.hull > 0) && (oppShip.hull) > 0){
-    myShipPlays();
-    oppShipPlays();
-}
+const players = createShips();
+const myShip = players[0];
+const allAliens = players[1].ships; // returns array of all alien ships
+let oppShip;
 
-// remove ship from aliens array
-console.log(allAliens.shift());
-console.log(allAliens);
+// starting scores.
+console.log('starting scores');
+console.log(myShip)
+// console.log(allAliens);
+// console.log(oppShip)
+console.log(`\n`);
+
+
+// while game end != true
+    for (const ship of allAliens){
+        oppShip = ship;
+        console.log(`\nSTART NEW ROUND: `)
+        // run continuous game til one player reaches 0
+        while ((myShip.hull > 1) && (oppShip.hull) > 1){ // check conditions here
+            myShipPlays();
+            oppShipPlays();
+            // print winner
+            if (myShip.hull > 0){
+            console.log(`${myShip.shipName} wins! ${oppShip.shipName} loses :(`);
+            }
+            else {
+                console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
+            }
+        }
+    }
+
+
 
 
 
