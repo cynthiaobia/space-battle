@@ -10,11 +10,15 @@ class Ship {
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
-        this.attack = true;
+        this.attacking = true;
     }
-
+    
     attack(){
         console.log(`${this.shipName.toUpperCase()} is attacking...`);
+    }
+
+    noAttack(){
+        console.log(`${this.shipName.toUpperCase()} cannot attack.`);
     }
 
     printInfo(){
@@ -90,23 +94,23 @@ console.log('starting scores');
 console.log(myShip)
 // console.log(allAliens);
 console.log(oppShip)
+console.log(`\n`);
 
-let myShipAttack = true;
-// if (Math.random() < myShip.accuracy){
-if (.5 < myShip.accuracy){
-    
-    console.log('My ship can attack!');
+if (Math.random() < myShip.accuracy){
+    myShip.attacking = true;
+    myShip.attack();
     oppShip.hull -= myShip.firepower;
     console.log(myShip);
     console.log(oppShip);
 }
-
-if (.5 < oppShip.accuracy){
-    console.log('Your ship can attack!');
-    myShip.hull -= oppShip.firepower;
+else {
+    myShip.attacking = false;
+    myShip.noAttack();
     console.log(myShip);
     console.log(oppShip);
 }
+
+
 
 
 
