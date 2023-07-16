@@ -8,11 +8,11 @@ class Ship {
     }
     
     attack(){
-        console.log(`${this.shipName.toUpperCase()} is attacking...`);
+        console.log(`\n${this.shipName.toUpperCase()} is attacking...`);
     }
 
     noAttack(){
-        console.log(`${this.shipName.toUpperCase()} cannot attack.`);
+        console.log(`\n${this.shipName.toUpperCase()} cannot attack.`);
     }
 
     printInfo(){
@@ -102,94 +102,37 @@ let input;
 
 
 while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
-oppShip = allAliens[0];
-    while ((myShip.hull > 0) && (oppShip.hull > 0)) {
-        if ((myShip.hull > 0) && (oppShip.hull > 0)) {
-            myShipPlays();
+    oppShip = allAliens[0];
+        while ((myShip.hull > 0) && (oppShip.hull > 0)) {
+            if ((myShip.hull > 0) && (oppShip.hull > 0)) {
+                myShipPlays();
+            }
+            else {
+                console.log('round over');
+            }
+            if ((oppShip.hull > 0) && (myShip.hull > 0)) {
+                oppShipPlays();
+            }
+            else {
+                console.log('round over');
+            }
         }
-        else {
-            console.log('round over');
-        }
-        if ((oppShip.hull > 0) && (myShip.hull > 0)) {
-            oppShipPlays();
-        }
-        else {
-            console.log('round over');
-        }
-    }
-allAliens.shift();
+    allAliens.shift();
 
-input = prompt("Would you like to retreat? (Y/N)");
-if (input === 'y'){
-    retreat = true;
-} 
-else if (input === 'n'){
-    retreat = false;
-}
-console.log(`Retreat? ${input}`);
-
-}
-
-
-
-
-
-
-
-/*
-// set retreat value
-
-// while game end != true and/or array not empty
-// starting scores.
-console.log('starting scores');
-console.log(myShip)
-console.log(allAliens[0]);
-console.log(`\n`);
-// console.log(allAliens);
-// console.log(oppShip)
-
-let retreat = false;
-let input;
-const gameEnd = false;
-
-// while (allAliens.length !== 0 ) {
-for (const ship of allAliens){
-    oppShip = ship;
-    // run continuous game til one player reaches 0
-    while ((myShip.hull >= 0) && (oppShip.hull >= 0)){ // check conditions here
-        myShipPlays(); // i know what's going on here. even if it goes zero or negative it still runs the next line before quitting
-        oppShipPlays();
-    }
-    // print winner
-    if (myShip.hull > 0){
-        console.log(`${myShip.shipName} wins! ${oppShip.shipName} loses :(`);
-        console.log(`\n`);
-        // this is where input prompt should go!!!!!!!!!
+    if (myShip.hull <= 0){
+        retreat = true;
     }
     else {
-        console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
-        console.log(`\n`);
-        // this is where input prompt should go!!!!!!!!!
+        input = prompt("Would you like to retreat? (Y/N)");
+        if (input === 'y'){
+            retreat = true;
+        } 
+        else if (input === 'n'){
+            retreat = false;
+        }
+        console.log(`Retreat? ${input}`);
     }
 }
-allAliens.shift();
-console.log(allAliens);
-// }
-*/
-
-
-
-/*
-input = prompt("Would you like to retreat? (Y/N)");
-if (input === 'y'){
-    retreat = true;
-} 
-else if (input === 'n'){
-    retreat = false;
-}
-console.log(`Retreat? ${input}`);
-*/
-
 
 // ================================
 // fix condition with hull value
