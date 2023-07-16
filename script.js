@@ -106,7 +106,7 @@ function myShipPlays(){
     }    
 }
 
-// opp ships, turn to play
+// Opp ship's turn to play
 function oppShipPlays(){
     if (Math.random() < oppShip.accuracy){
         oppShip.attacking = true;
@@ -138,6 +138,8 @@ let oppShip;
 // starting scores.
 console.log('starting scores');
 console.log(myShip)
+console.log(allAliens[0]);
+console.log(`\n`);
 // console.log(allAliens);
 // console.log(oppShip)
 
@@ -145,24 +147,27 @@ let retreat = false;
 let input;
 const gameEnd = false;
 
+// while (allAliens.length !== 0 ) {
 for (const ship of allAliens){
     oppShip = ship;
-    console.log(oppShip);
     // run continuous game til one player reaches 0
-    while ((myShip.hull >= 0) && (oppShip.hull) >= 0){ // check conditions here
+    while ((myShip.hull > 0) && (oppShip.hull > 0)){ // check conditions here
         myShipPlays();
         oppShipPlays();
-        // print winner
-        if (myShip.hull > 0){
-            console.log(`${myShip.shipName} wins! ${oppShip.shipName} loses :(`);
-        }
-        else {
-            console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
-        }
     }
-    console.log(allAliens);
+    // print winner
+    if (myShip.hull > 0){
+        console.log(`${myShip.shipName} wins! ${oppShip.shipName} loses :(`);
+        console.log(`\n`);
+    }
+    else {
+        console.log(`${myShip.shipName} loses :( ${oppShip.shipName} wins!`);
+        console.log(`\n`);
+    }
 }
-
+allAliens.shift();
+console.log(allAliens);
+// }
 
 /*
 input = prompt("Would you like to retreat? (Y/N)");
@@ -175,6 +180,14 @@ else if (input === 'n'){
 console.log(`Retreat? ${input}`);
 */
 
+
+// ================================
+// fix condition with hull value
+// remove ship from array
+// edit for user input
+// edit formatting
+// fix functions
+// random number generator
 
 
 
