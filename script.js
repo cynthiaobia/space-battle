@@ -84,6 +84,7 @@ function createShips() {
     // console.log(alienShips[2].hull);
 }
 
+// generate game start function
 const players = createShips();
 const myShip = players[0];
 const allAliens = players[1].ships; // returns array of all alien ships
@@ -96,6 +97,8 @@ console.log(myShip)
 console.log(oppShip)
 console.log(`\n`);
 
+
+// My ship's turn to play
 function myShipPlays(){
     if (Math.random() < myShip.accuracy){
         myShip.attacking = true;
@@ -112,6 +115,7 @@ function myShipPlays(){
     }    
 }
 
+// opp ships, turn to play
 function oppShipPlays(){
     if (Math.random() < oppShip.accuracy){
         oppShip.attacking = true;
@@ -126,6 +130,11 @@ function oppShipPlays(){
         console.log(myShip);
         console.log(oppShip);
     }
+}
+
+while ((myShip.hull || oppShip.hull) > 0){
+    myShipPlays();
+    oppShipPlays();
 }
 
 
