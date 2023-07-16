@@ -43,11 +43,11 @@ class Aliens {
         // initialize alien ship values
         newShip.shipName = 'Alien ' + (this.ships.length + 1);
         // newShip.hull = randomNumber(3, 6);
-        newShip.hull = 4; // remove later
+        newShip.hull = 6; // remove later
         // newShip.firepower = randomNumber(2, 4);
-        newShip.firepower = 3; // remove later
+        newShip.firepower = 4; // remove later
         // newShip.accuracy = randomNumber(.6, .8);
-        newShip.accuracy = .7; // remove later
+        newShip.accuracy = .8; // remove later
         this.ships.push(newShip);
     }
 }
@@ -121,21 +121,26 @@ function oppShipPlays(){
         oppShip.attacking = true;
         oppShip.attack();
         myShip.hull -= oppShip.firepower;
-        console.log(oppShip);
         console.log(myShip);
+        console.log(oppShip);
     }
     else {
         oppShip.attacking = false;
         oppShip.noAttack();
-        console.log(myShip);
         console.log(oppShip);
+        console.log(myShip);
     }
 }
 
-while ((myShip.hull || oppShip.hull) > 0){
+// run continuous game til one player reaches 0
+while ((myShip.hull > 0) && (oppShip.hull) > 0){
     myShipPlays();
     oppShipPlays();
 }
+
+// remove ship from aliens array
+console.log(allAliens.shift());
+console.log(allAliens);
 
 
 
