@@ -12,7 +12,7 @@ class Ship {
     }
 
     noAttack(){
-        console.log(`\n${this.shipName.toUpperCase()} missed and cannot attack.`);
+        console.log(`\n${this.shipName.toUpperCase()} attacked and missed!`);
     }
 
     printInfo(){
@@ -20,8 +20,7 @@ class Ship {
     }
 }
 
-// * === ALIEN INFORMATION * === //
-// make factory for alien ships
+// make factory class for alien ships
 class Aliens {
     constructor(){
         this.ships = []
@@ -37,7 +36,6 @@ class Aliens {
     }
 }
 
-// function to create ships
 function createShips() {
     const ussAssembly = new Ship('USS Assembly', 20, 5, .7);
     const aliens = new Aliens();
@@ -108,7 +106,7 @@ while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
 
     if (myShip.hull <= 0){
         retreat = true;
-        console.log(`\nGAME OVER. YOU LOSE :(  ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull}, ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
+        console.log(`\nGAME OVER. YOU LOSE :(  | ${myShip.shipName.toUpperCase()} HULL: ${myShip.hull}, ${oppShip.shipName.toUpperCase()} HULL: ${oppShip.hull}`);
     }
     else {
         input = prompt("Would you like to retreat? (Y/N)").toLowerCase();
@@ -120,7 +118,7 @@ while ((allAliens.length !== 0) && (retreat === false) && (myShip.hull > 0)) {
             retreat = false;
         }
         else {
-            input = prompt(`You're input is invalid. Please enter Y or N and try again.`);
+            alert(`You're input is invalid. Please enter Y or N and try again.`);
         }
         
         console.log(`RETREAT? ${input}`);
@@ -133,7 +131,8 @@ if ((myShip.hull > 0) && (retreat === false)){
 }
 
 // check retreat value for invalid inputs
-
+// Refactor fxns and classes
+// Pause between logs
 
 
 
